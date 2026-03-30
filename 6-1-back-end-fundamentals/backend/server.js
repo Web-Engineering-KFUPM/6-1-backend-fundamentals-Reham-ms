@@ -1,24 +1,26 @@
-const express = require("express");
+import express from "express";
+import cors from "cors";
 
 const app = express();
 const PORT = 3000;
 
-// Root route
+app.use(cors());
+
 app.get("/", (req, res) => {
     res.send("Welcome to the Full-Stack Fundamentals Lab!");
 });
 
-// About route
 app.get("/about", (req, res) => {
-    res.send("This is the About page of the Node.js + Express lab.");
+    res.send("This is the About page.");
 });
 
-// Student route
 app.get("/student", (req, res) => {
-    res.send("Student Name: Reham");
+    res.json({
+        name: "Reham",
+        major: "Computer Science",
+    });
 });
 
-// Start server
 app.listen(PORT, () => {
-    console.log(`Server is running on http://localhost:${PORT}`);
+    console.log(`Server running at http://localhost:${PORT}`);
 });
